@@ -1,5 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>	
+    <%@ page import="java.io.PrintWriter"%>
+	<%@ page import="brand.Brand"%>
+	<%@ page import="brand.BrandDAO"%>
+	<%@ page import="java.util.ArrayList"%>
+	
+	<%
+	request.setCharacterEncoding("UTF-8");
+	response.setContentType("text/html; charset=UTF-8"); 
+	%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,10 +56,11 @@
           <form
             id="custom-search-form"
             class="form-search form-horizontal pull-right"
-            action="search_engine.jsp"
+            method="get"
+            action="search_engine_after.jsp"
           >
             <div class="input-append">
-              <input type="text" class="search-main" placeholder="Search" />
+              <input type="text" class="search-main" placeholder="Search" name="brand_name"/>
               <button type="submit" class="btn">
                 <i class="fas fa-search fa-2x"></i>
               </button>

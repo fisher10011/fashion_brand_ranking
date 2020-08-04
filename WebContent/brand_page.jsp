@@ -22,6 +22,7 @@
 	image.get_data();
 	brand.follwer_update(image.follwer, request.getParameter("link"));
 %>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/bootstrap.css" />
@@ -80,7 +81,17 @@
     	for(int i=0;i<12;i++){
     %>
       <div class="item">
-        <img class="instagram_img" src="<%=image.images[i] %>" />
+        <img class="instagram_img" style="padding: 5px;" src="<%=image.images[i] %>" />
+        <table border="1" class="tags">
+          <tr>
+            <td>게시글 날짜</td>
+          <td><%=image.image_date[i] %></td>
+          </tr>
+          <tr>
+          <td>태그</td>
+            <td><%=image.taggs[i] %></td>
+          </tr>
+        </table>
       </div>
       <%} %>
     </div>

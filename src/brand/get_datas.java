@@ -10,6 +10,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class get_datas {
 	
     public String[] images =new String[12];
+    public String[] image_data = new String[12];
+    public String[] image_date =new String[12];
+    public String[] taggs =new String[12];
     public int follwer;
     //WebDriver
     private WebDriver driver;
@@ -45,19 +48,53 @@ public class get_datas {
     		Elements linksOnPage = doc.select(".v1Nh3.kIKUG._bz0w"); //클래스..
     		int i=0;
 			 for (Element page : linksOnPage) {
+				 
+				 //이미지 소스파일
 				Element img = page.select("img").first();
 				String imgtag = img.outerHtml();
 				int num = imgtag.indexOf("src=\"");
 				String result = imgtag.substring(num,(imgtag.substring(num).indexOf("\" style")+num));
 				result = result.replace("amp;", "").substring(5);
-				images[i++] = result;
+				images[i] = result;
+				
+				//게시글 소스
+				num= imgtag.indexOf("alt=\"");
+				result = imgtag.substring(num,(imgtag.substring(num).indexOf("\" class")+num));
+				result = result.substring(5);
+				image_data[i] =result;
+				
+				
+				// 게시글 날짜
+				String result2 =new String();
+				int num2= imgtag.indexOf("on ");
+				if(num2 !=(-1))
+					result2 = imgtag.substring((num2+3),(imgtag.substring(num2).indexOf("2020")+num2+4));
+				else
+					result2 = "Un identified";
+				image_date[i] =result2;
+				
+				
+				//태그들
+				String result3 =new String();
+				int num3 = imgtag.indexOf("tagging ");
+				int num4=-1;
+				if(num3 !=(-1))
+					num4 = imgtag.substring(num3).indexOf("이미지");
+				
+				if((num3 !=(-1))&&(num4 !=(-1)))
+					result3 = imgtag.substring((num3+7),(num4+num3));
+				else
+					result3 = "Unidentified";
+				taggs[i] =result3;
+				
+				i++;
 			 }
 			 
-			 Elements follower = doc.select(".g47SY");
+			 	Elements follower = doc.select(".g47SY");
 	    		String data = follower.get(1).outerHtml();
-	    		int num = data.indexOf("title");
-	    		String result = data.substring(num,(data.substring(num).indexOf(">")+num));
-	    		follwer =Integer.parseInt(result.replaceAll("[^0-9]", ""));
+	    		int number = data.indexOf("title");
+	    		String resultt = data.substring(number,(data.substring(number).indexOf(">")+number));
+	    		follwer =Integer.parseInt(resultt.replaceAll("[^0-9]", ""));
 	    		
         } catch (Exception e) {
             

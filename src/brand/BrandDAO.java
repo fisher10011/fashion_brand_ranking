@@ -38,10 +38,10 @@ public ArrayList<Brand> getlist(){
 			Brand brand = new Brand();
 			brand.brand_index = rs.getInt(1);
 			brand.Brandname = rs.getString(2);
-			brand.brand_follwer = rs.getInt(7);
-			brand.brand_rank = rs.getInt(5);
-			brand.link = rs.getString(4);
-			brand.brand_image = rs.getString(6);
+			brand.brand_follwer = rs.getInt(6);
+			brand.brand_rank = rs.getInt(4);
+			brand.link = rs.getString(3);
+			brand.brand_image = rs.getString(5);
 			list.add(brand);
 		}
 		
@@ -67,10 +67,10 @@ public ArrayList<Brand> getlist_with_name(String name){
 			Brand brand = new Brand();
 			brand.brand_index = rs.getInt(1);
 			brand.Brandname = rs.getString(2);
-			brand.brand_follwer = rs.getInt(7);
-			brand.brand_rank = rs.getInt(5);
-			brand.link = rs.getString(4);
-			brand.brand_image = rs.getString(6);
+			brand.brand_follwer = rs.getInt(6);
+			brand.brand_rank = rs.getInt(4);
+			brand.link = rs.getString(3);
+			brand.brand_image = rs.getString(5);
 			list.add(brand);
 		}
 		
@@ -85,18 +85,17 @@ public ArrayList<Brand> getlist_with_name(String name){
 
 //브랜드 추가 기능
 public int write(String brand_name, String brand_link,String brand_image) { 
-	String SQL = "INSERT INTO brand VALUES(?, ?, ?, ?, ?, ?, ?)";
+	String SQL = "INSERT INTO brand VALUES(?, ?, ?, ?, ?, ?)";
 	try {
 
 		PreparedStatement pstmt = conn.prepareStatement(SQL);
 
 		pstmt.setString(1, null);
 		pstmt.setString(2, brand_name);
-		pstmt.setString(3, null);
-		pstmt.setString(4, brand_link);
-		pstmt.setString(5, null);
-		pstmt.setNString(6, brand_image);
-		pstmt.setNString(7, null);
+		pstmt.setString(3, brand_link);
+		pstmt.setString(4, null);
+		pstmt.setNString(5, brand_image);
+		pstmt.setNString(6, null);
 
 		return pstmt.executeUpdate();
 	} catch (Exception e) {
