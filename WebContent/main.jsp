@@ -49,7 +49,7 @@
       </div>
     </div>
 
-    <p class="title">검색하세요</p>
+    <p class="title">브랜드를 검색하세요</p>
     <div class="container">
       <div class="row">
         <div class="span12">
