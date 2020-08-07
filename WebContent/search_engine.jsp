@@ -3,6 +3,7 @@
     <%@ page import="java.io.PrintWriter"%>
 	<%@ page import="brand.Brand"%>
 	<%@ page import="brand.BrandDAO"%>
+	<%@ page import="brand.Number"%>
 	<%@ page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
@@ -57,28 +58,13 @@
     </div>
 
     <div class="container_main">
-      <form action="">
+      <form action="" style="padding-left: 20px;">
         <table class="plus_action">
           <tr>
-            <td>
-              <p><input type="radio" name="term" value="no" checked />전체</p>
-            </td>
-            <td>
-              <p><input type="radio" name="term" value="week" />주간</p>
-            </td>
-            <td>
-              <p><input type="radio" name="term" value="month" />월간</p>
-            </td>
-            <td>
-              <p><input type="radio" name="term" value="year" />년간</p>
-            </td>
+            <td colspan="2">팔로워 수<input type="number" /></td>
           </tr>
           <tr>
-            <td colspan="2">시작: <input type="date" name="start" /></td>
-            <td colspan="2">끝: <input type="date" name="end" /></td>
-          </tr>
-          <tr>
-            <td colspan="4">
+            <td colspan="2">
               <input type="submit" value="조건 적용하여 재검색" />
             </td>
           </tr>
@@ -101,21 +87,28 @@
             	<%
             	BrandDAO brandDAO = new BrandDAO();
             	ArrayList<Brand> list = brandDAO.getlist();
+            	Number num = new Number();
             	for(int i=0;i<list.size();i++){
             	%>
-              <tr>
-                <td><%= (list.get(i).brand_rank) %></td>
-                <td><a href="brand_page.jsp?Brandname=<%=list.get(i).Brandname %>
+              <tr style="height:80px">
+                <td><div style="padding-left: 42px"><%= (list.get(i).brand_rank) %></div></td>
+                <td>
+                <a href="brand_page.jsp?Brandname=<%=list.get(i).Brandname %>
                 &link=<%=list.get(i).link %>&brand_index=<%= list.get(i).brand_index %>
                 &brand_rank=<%=list.get(i).brand_rank %>&image=<%=list.get(i).brand_image %>">
+                <img
+		        style="width: 181px"
+		          src="<%= list.get(i).brand_image %>"
+		        />
+		        &nbsp;&nbsp;
                 <%=list.get(i).Brandname %></a></td>
-                <td><%=list.get(i).brand_follwer %></td>
+                <td><%=num.num_out(list.get(i).brand_follwer)%></td>
               </tr>
               <%} %>
             </tbody>
 			<tfoot>
 				<tr>
-					<td align="center" colspan="3">1</td>
+					<td align="center" colspan="3">순위 리스트</td>
 				</tr>
 			</tfoot>
           </table>

@@ -13,6 +13,7 @@ public class get_datas {
     public String[] image_data = new String[12];
     public String[] image_date =new String[12];
     public String[] taggs =new String[12];
+    public String[] links = new String[12];
     public int follwer;
     //WebDriver
     private WebDriver driver;
@@ -86,6 +87,15 @@ public class get_datas {
 				else
 					result3 = "Unidentified";
 				taggs[i] =result3;
+				
+				
+				//게시글 링크
+				Element link = page.select("a").first();
+				String link_Src = link.outerHtml();
+				int num5 = link_Src.indexOf("href=\"")+6;
+				String result4 = link_Src.substring(num5, (link_Src.substring(num5).indexOf("\" tabindex")+num5));
+				links[i] = result4;
+				
 				
 				i++;
 			 }

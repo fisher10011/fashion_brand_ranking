@@ -52,6 +52,7 @@
     <div class="container">
       <div class="leftrow">
         <img
+        style="width: 181px"
           src="<%= brandObj.brand_image %>"
         />
         <div style="font-weight: bold;">브랜드명: <%= brandObj.Brandname %></div>
@@ -69,7 +70,7 @@
           </thead>
           <tr>
             <th><p style="font-size: 60px;"><%= brandObj.brand_rank %></p></th>
-            <th><p style="font-size: 60px;"><%= image.follwer %></p></th>
+            <th><p style="font-size: 60px;"><%= String.format("%,d",image.follwer) %></p></th>
           </tr>
         </table>
       </div>
@@ -81,7 +82,9 @@
     	for(int i=0;i<12;i++){
     %>
       <div class="item">
+      	<a href="https://www.instagram.com<%= image.links[i] %>">
         <img class="instagram_img" style="padding: 5px;" src="<%=image.images[i] %>" />
+        </a>
         <table border="1" class="tags">
           <tr>
             <td>게시글 날짜</td>

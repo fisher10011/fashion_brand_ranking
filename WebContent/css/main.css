@@ -148,6 +148,10 @@ td.rank{
   text-align: center;
 }
 
+img.brand_image {
+	width: 191px;
+}
+
 /* 게시글*/
 .container_instagram {
   display: flex;

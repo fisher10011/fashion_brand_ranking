@@ -73,10 +73,4 @@ public class Brand {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
 }
