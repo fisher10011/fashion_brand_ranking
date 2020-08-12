@@ -8,7 +8,7 @@
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html; charset=UTF-8"); //set으로쓰는습관들이세오.
 	Brand brandObj = new Brand();
-	brandObj.setBrandname(request.getParameter("Brandname"));
+	brandObj.Brandname =request.getParameter("Brandname");
 %>
 
 
@@ -36,17 +36,25 @@
 
 	<% 
 	BrandDAO BrandDAO = new BrandDAO();
+	PrintWriter script = response.getWriter();
+	int result2 = BrandDAO.find(brandObj.Brandname);
+	if(result2==0)
+		{
+		script.println("<script>");
+		script.println("alert('리스트에 존재하지 않는 브랜드입니다')");
+		script.println("location.href='delete_brand.jsp'");
+		script.println("</script>");
+		}
+	
 	int result = BrandDAO.delete(brandObj.Brandname);
 	if (result == -1) {
 
-		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('브랜드 삭제 실패')");
 		script.println("history.back()");
 		script.println("</script>");
 
 	} else {
-		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("location.href='search_engine.jsp'");
 		//script.println("history.back()");

@@ -9,8 +9,8 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html; charset=UTF-8"); //set으로쓰는습관들이세오.
-	String name= new String();
-	name = request.getParameter("brand_name");
+	int min = Integer.parseInt(request.getParameter("min"));
+	int max = Integer.parseInt(request.getParameter("max"));
 	%>
 <!DOCTYPE html>
 <html>
@@ -92,7 +92,7 @@
             <tbody>
             	<%
             	BrandDAO brandDAO = new BrandDAO();
-            	ArrayList<Brand> list = brandDAO.getlist_with_name(name);
+            	ArrayList<Brand> list = brandDAO.getlist_with_follwer(min,max);
             	Number num = new Number();
             	for(int i=0;i<list.size();i++){
             	%>

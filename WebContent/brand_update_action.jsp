@@ -3,14 +3,18 @@
     <%@ page import="java.io.PrintWriter"%>
 	<%@ page import="brand.Brand"%>
 	<%@ page import="brand.BrandDAO"%>
+	<%@ page import="brand.get_datas"%>
 	<%@ page import="java.util.ArrayList"%>
 <%
 	request.setCharacterEncoding("UTF-8");
 	response.setContentType("text/html; charset=UTF-8"); //set으로쓰는습관들이세오.
 	Brand brandObj = new Brand();
-	brandObj.setBrandname(request.getParameter("Brandname"));
-	brandObj.setLink(request.getParameter("link"));
-	brandObj.setBrand_image(request.getParameter("image"));
+	get_datas exists =new get_datas();
+	exists.update_url(request.getParameter("link"));
+	exists.link_test();
+	brandObj.Brandname= request.getParameter("Brandname");
+	brandObj.link=request.getParameter("link");
+	brandObj.brand_image = request.getParameter("image");
 %>
 
 
@@ -38,6 +42,17 @@
 
 	<% 
 	BrandDAO BrandDAO = new BrandDAO();
+	if(exists.exist == 1)
+		{
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('존재하지 않는 링크입니다')");
+		script.println("history.back()");
+		script.println("</script>");
+		}
+	else
+	{
+	
 	int result = BrandDAO.write(brandObj.Brandname,brandObj.link,brandObj.brand_image);
 	if (result == -1) {
 
@@ -55,7 +70,7 @@
 		script.println("</script>");
 
 	}
-	
+	}
 	
 	%>
 	

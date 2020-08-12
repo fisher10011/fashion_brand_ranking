@@ -30,7 +30,7 @@
       <div class="container clearfix">
         <div class="container-left clearfix">
           <div class="logo">
-            <a href="main.jsp">
+            <a href="index.jsp">
             <img
               src="https://heropcode.github.io/GitHub-Responsive/img/logo.svg"
               alt="메인 메뉴"
@@ -55,7 +55,7 @@
 			</tr>
     		<tr>
      			<td colspan="2"><div align="center">
-     			<input type="submit" value="등록" >&nbsp;&nbsp;
+     			<input type="submit" value="브랜드 삭제" >&nbsp;&nbsp;
          		<input type="button" value="뒤로" onclick="move('search_engine.jsp');"></div>
      			</td>
     		</tr> 

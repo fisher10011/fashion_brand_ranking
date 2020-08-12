@@ -23,11 +23,6 @@
       crossorigin="anonymous"
     />
     
-<script type="text/javascript">
-	function move(url) {
-		location.href=url;
-	}
-</script>
 </head>
 <body>
 

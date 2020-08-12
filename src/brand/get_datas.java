@@ -1,4 +1,6 @@
 package brand;
+import java.util.Calendar;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -8,13 +10,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class get_datas {
-	
+	Calendar cal = Calendar.getInstance();
     public String[] images =new String[12];
-    public String[] image_data = new String[12];
     public String[] image_date =new String[12];
     public String[] taggs =new String[12];
     public String[] links = new String[12];
     public int follwer;
+    public int exist=0;
     //WebDriver
     private WebDriver driver;
     //private WebElement element;
@@ -58,18 +60,19 @@ public class get_datas {
 				result = result.replace("amp;", "").substring(5);
 				images[i] = result;
 				
-				//게시글 소스
-				num= imgtag.indexOf("alt=\"");
-				result = imgtag.substring(num,(imgtag.substring(num).indexOf("\" class")+num));
-				result = result.substring(5);
-				image_data[i] =result;
-				
-				
 				// 게시글 날짜
 				String result2 =new String();
 				int num2= imgtag.indexOf("on ");
 				if(num2 !=(-1))
+					{
 					result2 = imgtag.substring((num2+3),(imgtag.substring(num2).indexOf("2020")+num2+4));
+					if(result2.length()>19)
+					{
+						result2 = result2.substring(result2.indexOf("2020")-4, result2.indexOf("2020")+4);
+						result2 = Integer.toString(cal.get(Calendar.MONTH) + 1) +"월 "+ result2;
+					}
+					}
+				
 				else
 					result2 = "Un identified";
 				image_date[i] =result2;
@@ -99,7 +102,6 @@ public class get_datas {
 				
 				i++;
 			 }
-			 
 			 	Elements follower = doc.select(".g47SY");
 	    		String data = follower.get(1).outerHtml();
 	    		int number = data.indexOf("title");
@@ -114,18 +116,30 @@ public class get_datas {
         	driver.close();
 	        driver.quit();
         }
-        
- 
     }
 
-	public String[] getImages() {
-		return images;
-	}
-
-	public void setImages(String[] images) {
-		this.images = images;
-	}
-
     
-    
+    //링크가 존재하지 않는 링크인지 확인!
+	   public void link_test() {
+	        try {
+	            //get page (= 브라우저에서 url을 주소창에 넣은 후 request 한 것과 같다)
+	            driver.get(base_url);
+	            
+	            //System.out.println(driver.getPageSource());
+	            Document doc = Jsoup.parse(driver.getPageSource());
+	    		Elements linksOnPage = doc.select("._07DZ3"); //클래스..
+	    		
+	    		Element page = linksOnPage.select("h2").first();
+	    		String page_str = page.outerHtml();
+	    		if(page_str !=null)
+	    			this.exist =1;
+	        } catch (Exception e) {
+	            
+	            e.printStackTrace();
+	        
+	        } finally {
+	        	driver.close();
+		        driver.quit();
+	        }
+	    }
 }

@@ -3,6 +3,7 @@
     <%@ page import="java.io.PrintWriter"%>
 	<%@ page import="brand.Brand"%>
 	<%@ page import="brand.BrandDAO"%>
+	<%@ page import="brand.get_datas"%>
 	<%@ page import="java.util.ArrayList"%>
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@
       <div class="container clearfix">
         <div class="container-left clearfix">
           <div class="logo">
-            <a href="main.jsp">
+            <a href="index.jsp">
             <img
               src="https://heropcode.github.io/GitHub-Responsive/img/logo.svg"
               alt="메인 메뉴"

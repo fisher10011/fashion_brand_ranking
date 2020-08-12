@@ -5,6 +5,7 @@
 	<%@ page import="brand.BrandDAO"%>
 	<%@ page import="brand.Number"%>
 	<%@ page import="java.util.ArrayList"%>
+	
 
 <!DOCTYPE html>
 <html>
@@ -27,7 +28,7 @@
       <div class="container clearfix">
         <div class="container-left clearfix">
           <div class="logo">
-            <a href="main.jsp">
+            <a href="index.jsp">
             <img
               src="https://heropcode.github.io/GitHub-Responsive/img/logo.svg"
               alt="메인 메뉴"
@@ -50,7 +51,9 @@
           >
             <div class="input-append">
               <input type="text" class="search" placeholder="Search" name="brand_name" />
-              <input type="submit" value="검색" >
+              <button type="submit" class="btn">
+                <i class="fas fa-search fa-2x"></i>
+              </button>
             </div>
           </form>
         </div>
@@ -58,16 +61,22 @@
     </div>
 
     <div class="container_main">
-      <form action="" style="padding-left: 20px;">
+      <form action="search_engine_after_num.jsp"
+      methods="get"
+       style="padding-left: 20px;">
         <table class="plus_action">
+        <tr>
+        <td><br></td>
+        </tr>
           <tr>
-            <td colspan="2">팔로워 수<input type="number" /></td>
-          </tr>
-          <tr>
-            <td colspan="2">
-              <input type="submit" value="조건 적용하여 재검색" />
+            <td >팔로워 수  <input type="number" name="min" style="width:60px"/> 이상 &nbsp;&nbsp;&nbsp;<input type="number" name="max" style="width:60px" /> 이하</td>
+            <td>
+              &nbsp;&nbsp;
+              <button type="submit" class="btn">
+             	 <div style="font-weight:bold">조건적용</div>
+              </button>
             </td>
-          </tr>
+           </tr>
         </table>
       </form>
     </div>
@@ -75,8 +84,8 @@
     <br>
 
     <div class="container">
-          <table class="rank" border="1">
-            <thead>
+          <table class="rank" border="1" style="border: black;">
+            <thead class="head">
               <tr>
                 <th style="width: 100px;">순위</th>
                 <th>브랜드</th>
@@ -95,7 +104,7 @@
                 <td>
                 <a href="brand_page.jsp?Brandname=<%=list.get(i).Brandname %>
                 &link=<%=list.get(i).link %>&brand_index=<%= list.get(i).brand_index %>
-                &brand_rank=<%=list.get(i).brand_rank %>&image=<%=list.get(i).brand_image %>">
+                &brand_rank=<%=list.get(i).brand_rank %>&image=<%=list.get(i).brand_image %>&index=<%=list.get(i).brand_index %>">
                 <img
 		        style="width: 181px"
 		          src="<%= list.get(i).brand_image %>"
