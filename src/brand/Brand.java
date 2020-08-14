@@ -12,7 +12,6 @@ public class Brand {
 	public int[] rescent_follwers =new int[5];
 	
 	
-
 	public Brand() {
 	}
 	

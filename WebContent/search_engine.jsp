@@ -69,7 +69,7 @@
         <td><br></td>
         </tr>
           <tr>
-            <td >팔로워 수  <input type="number" name="min" style="width:60px"/> 이상 &nbsp;&nbsp;&nbsp;<input type="number" name="max" style="width:60px" /> 이하</td>
+            <td >팔로워 수  <input type="number" name="min" style="width:70px"/> 이상 &nbsp;&nbsp;&nbsp;<input type="number" name="max" style="width:70px" /> 이하</td>
             <td>
               &nbsp;&nbsp;
               <button type="submit" class="btn">

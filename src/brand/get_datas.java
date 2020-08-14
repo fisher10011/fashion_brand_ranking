@@ -99,7 +99,6 @@ public class get_datas {
 				String result4 = link_Src.substring(num5, (link_Src.substring(num5).indexOf("\" tabindex")+num5));
 				links[i] = result4;
 				
-				
 				i++;
 			 }
 			 	Elements follower = doc.select(".g47SY");

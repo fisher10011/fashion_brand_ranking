@@ -69,7 +69,7 @@
       <form action="" style="padding-left: 20px;">
         <table class="plus_action">
           <tr>
-            <td >팔로워 수  <input type="number" style="width:60px"/> 이상 &nbsp;&nbsp;&nbsp;<input type="number" style="width:60px" /> 이하</td>
+            <td >팔로워 수  <input type="number" style="width:70px"/> 이상 &nbsp;&nbsp;&nbsp;<input type="number" style="width:70px" /> 이하</td>
             <td>
               &nbsp;&nbsp;<input type="submit" value="조건 적용" />
             </td>
